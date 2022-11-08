@@ -1,0 +1,13 @@
+{
+  "name": "default-node-ts-project",
+  "version": "1.0.0",
+  "private": "true",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "start": "tsc && nodemon dist/index.js"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.9"
+  }
+}
