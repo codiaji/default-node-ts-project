@@ -1,15 +1,12 @@
-function handleRequest (url:string,method:"GET"|"POST") {
-    
+// strictNullChecks on
+// we can use narrowing to check for values that might be null :
+function doSomething(x: string | null) {
+    if (x === null) {
+    // do nothing
+    } else {
+    console.log("Hello, " + x.toUpperCase());
+    }
 }
-
-let req = { url: "https://example.com", method: "GET" };
-// the below line will lead to an error once uncommented
-// handleRequest(req.url, req.method);
-// To bypass the above matter, you can either aplpy change 1 or change 2
-// Change 1:
-// req = { url: "https://example.com", method: "GET" as "GET" };
-// Change 2
-handleRequest(req.url, req.method as "GET");
-// We can also proceed as follows
-const reqBis = { url: "https://example.com", method: "GET" } as const;
-handleRequest(reqBis.url, reqBis.method);
+doSomething(null);
+// The below line will lead to an error once uncommented
+//    doSomething(undefined);
