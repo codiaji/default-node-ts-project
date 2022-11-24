@@ -1,7 +1,28 @@
-// Type Assertions
-let myCanvas = document.getElementById("main_canvas") as HTMLCanvasElement
-myCanvas = <HTMLCanvasElement>document.getElementById("main_canvas")
-// type assertions convert to a more specific or less specific version of a type. This rule prevents "impossible" coercions like:
-// const x = "hello" as number;
-// A workaround of the above rule is as below
-// const a = (expr as any) as T;
+let x: "hello" = "hello";
+// OK
+x = "hello";
+// The below code snippet will lead to error once uncommented
+// x = "howdy";
+
+function printText(s: string, alignment: "left" | "right" | "center") {
+    // ...
+}
+printText("Hello, world", "left");
+// The below code snippet will lead to error once uncommented
+//    printText("G'day, mate", "centre");
+
+function compare(a: number, b: number): -1 | 0 | 1 {
+    return a === b ? 0 : a > b ? 1 : -1;
+}
+console.log('compare(1,9) :>> ', compare(1,9));
+
+interface Options {
+    width: number;
+   }
+   function configure(x: Options | "auto") {
+    // ...
+   }
+   configure({ width: 100 });
+   configure("auto");
+   // The below code snippet will lead to error once uncommented
+//    configure("automatic");
