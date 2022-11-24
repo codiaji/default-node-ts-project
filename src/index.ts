@@ -1,7 +1,15 @@
-// The parameter's type annotation is an object type
-function printCoord(pt: { x: number; y: number, z?:number }) {
-    console.log("The coordinate's x value is " + pt.x);
-    console.log("The coordinate's y value is " + pt.y);
+interface Person {
+ firstName: string;
+};
+interface Person {
+ lastName: string;
+};
+const me:Person = {firstName:"Amine",lastName:"El idrissi"};
+console.log('me :>> ', me);
+// The below code snippet will lead to error
+/* type Window = {
+    title: string
    }
-   printCoord({ x: 3, y: 7 });
-   printCoord({ x: 3, y: 7,z:11 });
+   type Window = {
+    ts: TypeScriptAPI
+   } */
