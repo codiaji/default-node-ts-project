@@ -1,28 +1,15 @@
-let x: "hello" = "hello";
-// OK
-x = "hello";
-// The below code snippet will lead to error once uncommented
-// x = "howdy";
-
-function printText(s: string, alignment: "left" | "right" | "center") {
-    // ...
+function handleRequest (url:string,method:"GET"|"POST") {
+    
 }
-printText("Hello, world", "left");
-// The below code snippet will lead to error once uncommented
-//    printText("G'day, mate", "centre");
 
-function compare(a: number, b: number): -1 | 0 | 1 {
-    return a === b ? 0 : a > b ? 1 : -1;
-}
-console.log('compare(1,9) :>> ', compare(1,9));
-
-interface Options {
-    width: number;
-   }
-   function configure(x: Options | "auto") {
-    // ...
-   }
-   configure({ width: 100 });
-   configure("auto");
-   // The below code snippet will lead to error once uncommented
-//    configure("automatic");
+let req = { url: "https://example.com", method: "GET" };
+// the below line will lead to an error once uncommented
+// handleRequest(req.url, req.method);
+// To bypass the above matter, you can either aplpy change 1 or change 2
+// Change 1:
+// req = { url: "https://example.com", method: "GET" as "GET" };
+// Change 2
+handleRequest(req.url, req.method as "GET");
+// We can also proceed as follows
+const reqBis = { url: "https://example.com", method: "GET" } as const;
+handleRequest(reqBis.url, reqBis.method);
