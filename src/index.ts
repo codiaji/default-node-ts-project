@@ -1,12 +1,12 @@
-function printAll(strs: string | string[] | null) {
-    if (strs && typeof strs === "object") {
-    for (const s of strs) {
-    console.log(s);
-    }
-    } else if (typeof strs === "string") {
-    console.log(strs);
+function example(x: string | number, y: string | boolean) {
+    if (x === y) {
+    // We can now call any 'string' method on 'x' or 'y'.
+    console.log(x.toUpperCase());
+    console.log(y.toLowerCase());
+    } else {
+    console.log(x);
+    console.log(y);
     }
    }
-printAll(["Morocco","Algeria","Arabic","Africa"])
-printAll("Qatar")
-printAll(null)
+   example("Ae7","Ae7");
+   example(10,"10")
