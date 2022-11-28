@@ -1,7 +1,6 @@
-function liveDangerously(x?: number | null) {
-    // No error
-    console.log(x!.toFixed());
-}
-liveDangerously()
-liveDangerously(null)
-liveDangerously(1)
+function padLeft(padding: number | string, input: string) {
+    if (typeof padding === "number") {
+    return " ".repeat(padding) + input;
+    }
+    return padding + input;
+   }
