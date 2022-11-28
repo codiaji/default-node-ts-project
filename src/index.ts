@@ -1,12 +1,18 @@
-function example(x: string | number, y: string | boolean) {
-    if (x === y) {
-    // We can now call any 'string' method on 'x' or 'y'.
-    console.log(x.toUpperCase());
-    console.log(y.toLowerCase());
-    } else {
-    console.log(x);
-    console.log(y);
-    }
-   }
-   example("Ae7","Ae7");
-   example(10,"10")
+interface Container {
+ value: number | null | undefined;
+}
+function multiplyValue(container: Container, factor: number) {
+ // Remove both 'null' and 'undefined' from the type.
+ if (container.value != null) {
+ console.log(container.value);
+ // Now we can safely multiply 'container.value'.
+ container.value *= factor;
+ }
+}
+let container:Container={value:974/2}
+multiplyValue(container,2)
+console.log('container.value :>> ', container.value);
+container={value:undefined}
+multiplyValue(container,2)
+container={value:null}
+multiplyValue(container,2)
