@@ -1,9 +1,5 @@
-function logValue(x: Date | string) {
-	if (x instanceof Date) {
-		console.log(x.toUTCString());
-	} else {
-		console.log(x.toUpperCase());
-	}
-}
-logValue('time in Morocco now is:');
-logValue(new Date());
+let x = Math.random() < 0.5 ? 10 : 'hello world!';
+x = 1;
+console.log(`x's type's: ${typeof x}`);
+x = 'goodbye!';
+console.log(`x's type's: ${typeof x}`);

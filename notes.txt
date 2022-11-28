@@ -1,0 +1,1 @@
+highlight the variable x with 'index.ts' file to see its types in different phase.
