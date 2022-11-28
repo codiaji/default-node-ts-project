@@ -1,6 +1,12 @@
-function padLeft(padding: number | string, input: string) {
-    if (typeof padding === "number") {
-    return " ".repeat(padding) + input;
+function printAll(strs: string | string[] | null) {
+    if (strs && typeof strs === "object") {
+    for (const s of strs) {
+    console.log(s);
     }
-    return padding + input;
+    } else if (typeof strs === "string") {
+    console.log(strs);
+    }
    }
+printAll(["Morocco","Algeria","Arabic","Africa"])
+printAll("Qatar")
+printAll(null)
