@@ -1,14 +1,9 @@
-type vFT = () => void;
-type voidFunctionType = () => {};
-type Fish = { swim: vFT };
-type Bird = { fly: vFT };
-type Human = { swim?: vFT; fly?: vFT };
-function move(animal: Fish | Bird | Human) {
-	if ('swim' in animal) {
-		return animal;
+function logValue(x: Date | string) {
+	if (x instanceof Date) {
+		console.log(x.toUTCString());
 	} else {
-		return animal;
+		console.log(x.toUpperCase());
 	}
 }
-console.log('move({ fly: () => {} }) :>> ', move({ fly: () => {} }));
-console.log('move({ swim: () => {} }) :>> ', move({ swim: () => {} }));
+logValue('time in Morocco now is:');
+logValue(new Date());
