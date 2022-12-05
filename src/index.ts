@@ -1,12 +1,13 @@
-type DescribableFunction = {
-	description: string;
-	(someArg: number): boolean;
+class Person {
+	name: string;
+	constructor(name: string) {
+		this.name = name;
+	}
+}
+type PersonConstructor = {
+	new (name: string): { name: string };
 };
-function doSomething(fn: DescribableFunction) {
-	console.log(fn.description + ' returned ' + fn(6));
+function peopleConstructor(pConstructor: PersonConstructor) {
+	return new pConstructor('hello');
 }
-function isOdd(number: number) {
-	return number % 2 === 0;
-}
-isOdd.description = 'is odd Function';
-doSomething(isOdd);
+console.log('peopleConstructor(Person) :>> ', peopleConstructor(Person));
