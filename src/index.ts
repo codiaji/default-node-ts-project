@@ -1,8 +1,12 @@
-type GreetFunction = (a: string) => void;
-function greeter(fn: GreetFunction) {
-	fn('Hello, World');
+type DescribableFunction = {
+	description: string;
+	(someArg: number): boolean;
+};
+function doSomething(fn: DescribableFunction) {
+	console.log(fn.description + ' returned ' + fn(6));
 }
-function printToConsole(s: string) {
-	console.log(s);
+function isOdd(number: number) {
+	return number % 2 === 0;
 }
-greeter(printToConsole);
+isOdd.description = 'is odd Function';
+doSomething(isOdd);
