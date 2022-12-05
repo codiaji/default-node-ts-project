@@ -1,6 +1,10 @@
-function firstElement<Type>(arr: Type[]): Type | undefined {
-	return arr[0];
+function map<Input, Output>(
+	arr: Input[],
+	func: (arg: Input) => Output,
+): Output[] {
+	return arr.map(func);
 }
-console.log('firstElement([]) :>> ', firstElement([]));
-console.log('firstElement([1]) :>> ', firstElement([1]));
-console.log('firstElement(["a","b"]) :>> ', firstElement(['a', 'b']));
+// Parameter 'n' is of type 'string'
+// 'parsedArray' is of type 'number[]'
+const parsedArray = map(['1', '2', '3'], n => parseInt(n));
+console.log('parsedArray :>> ', parsedArray);
