@@ -1,1 +1,0 @@
-TypeScript use control flow analysis which is code's analysis of based on reachability to narrow types as it encounters type guards and assignments. When a variable is analyzed, control flow can split off and re-merge over and over again, and that variable can be observed to have a different type at each point.

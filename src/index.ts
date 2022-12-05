@@ -1,10 +1,6 @@
-function map<Input, Output>(
-	arr: Input[],
-	func: (arg: Input) => Output,
-): Output[] {
-	return arr.map(func);
+function longest<T extends { length: number }>(first: T, second: T): T {
+	return first.length > second.length ? first : second;
 }
-// Parameter 'n' is of type 'string'
-// 'parsedArray' is of type 'number[]'
-const parsedArray = map(['1', '2', '3'], n => parseInt(n));
-console.log('parsedArray :>> ', parsedArray);
+console.log('longest("a","ea7") :>> ', longest('a', 'ea7'));
+console.log('longest([1],[1,2,3,4]) :>> ', longest([1], [1, 2, 3, 4]));
+longest(1, 2);
