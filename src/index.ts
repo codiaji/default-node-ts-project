@@ -1,13 +1,4 @@
-class Person {
-	name: string;
-	constructor(name: string) {
-		this.name = name;
-	}
+interface CallOrConstruct {
+	new (s: string): Date;
+	(n?: number): number;
 }
-type PersonConstructor = {
-	new (name: string): { name: string };
-};
-function peopleConstructor(pConstructor: PersonConstructor) {
-	return new pConstructor('hello');
-}
-console.log('peopleConstructor(Person) :>> ', peopleConstructor(Person));
