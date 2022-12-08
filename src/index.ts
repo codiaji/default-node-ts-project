@@ -1,6 +1,15 @@
-function longest<T extends { length: number }>(first: T, second: T): T {
-	return first.length > second.length ? first : second;
+function minimumLength<Type extends { length: number }>(
+	obj: Type,
+	minimum: number,
+): Type {
+	if (obj.length >= minimum) {
+		return obj;
+	} else {
+		return { length: minimum };
+	}
 }
-console.log('longest("a","ea7") :>> ', longest('a', 'ea7'));
-console.log('longest([1],[1,2,3,4]) :>> ', longest([1], [1, 2, 3, 4]));
-longest(1, 2);
+// 'arr' gets value { length: 6 }
+const arr = minimumLength([1, 2, 3], 6);
+// and crashes here because arrays have
+// a 'slice' method, but not the returned object!
+console.log(arr.slice(0));
