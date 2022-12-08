@@ -1,4 +1,0 @@
-It might look like this function is OK - Type is constrained to { length: number } , and the
-function either returns Type or a value matching that constraint. The problem is that the function
-promises to return the same kind of object as was passed in, not just some object matching the
-constraint.
