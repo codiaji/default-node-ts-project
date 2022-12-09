@@ -1,4 +1,10 @@
-function combine<Type>(arr1: Type[], arr2: Type[]): Type[] {
-	return arr1.concat(arr2);
+function firstElement1<Type>(arr: Type[]) {
+	return arr[0];
 }
-const arr = combine<string | number>([1, 2, 3], ['hello']);
+function firstElement2<Type extends any[]>(arr: Type) {
+	return arr[0];
+}
+// a: number (good)
+const a = firstElement1([1, 2, 3]);
+// b: any (bad)
+const b = firstElement2([1, 2, 3]);
