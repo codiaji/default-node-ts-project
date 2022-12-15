@@ -1,13 +1,21 @@
-function makeDate(timestamp: number): Date;
-function makeDate(m: number, d: number, y: number): Date;
-function makeDate(mOrTimestamp: number, d?: number, y?: number): Date {
-	if (d !== undefined && y !== undefined) {
-		return new Date(y, mOrTimestamp, d);
-	} else {
-		return new Date(mOrTimestamp);
-	}
+// The below three cases show misuse of function overloads
+// case 1
+// The function signature doesn't allow the parameter to be optional, so function signature doesn't suit function implementation
+function fn(x: string): void;
+function fn() {
+	// ...
 }
-const d1 = makeDate(12345678);
-const d2 = makeDate(5, 5, 5);
-// If we uncomment the below code snippet, we'll get the following error:
-// const d3 = makeDate(1, 3);
+// Expected to be able to call with zero arguments
+fn();
+// case 2
+function f(x: boolean): void;
+// Argument type isn't right
+function f(x: string): void;
+function f(x: boolean) {}
+// case 3
+function fun(x: string): string;
+// Return type isn't right
+function fun(x: number): boolean;
+function fun(x: string | number) {
+	return 'oops';
+}
