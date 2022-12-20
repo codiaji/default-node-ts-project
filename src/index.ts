@@ -1,21 +1,14 @@
-// The below three cases show misuse of function overloads
-// case 1
-// The function signature doesn't allow the parameter to be optional, so function signature doesn't suit function implementation
-function fn(x: string): void;
-function fn() {
-	// ...
+// Don't write code like the below one
+function len(s: string): number;
+function len(arr: any[]): number;
+function len(x: any) {
+	return x.length;
 }
-// Expected to be able to call with zero arguments
-fn();
-// case 2
-function f(x: boolean): void;
-// Argument type isn't right
-function f(x: string): void;
-function f(x: boolean) {}
-// case 3
-function fun(x: string): string;
-// Return type isn't right
-function fun(x: number): boolean;
-function fun(x: string | number) {
-	return 'oops';
-}
+
+len(''); // OK
+len([0]); // OK
+len(Math.random() > 0.5 ? 'hello' : [0]);
+// Write this alternative
+/* function len(x: any[] | string) {
+	return x.length;
+   } */
