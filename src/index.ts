@@ -1,12 +1,3 @@
-function fail(msg: string): never {
-	throw new Error(msg);
-}
-function fn(x: string | number) {
-	if (typeof x === 'string') {
-		// do something
-	} else if (typeof x === 'number') {
-		// do something else
-	} else {
-		x; // has type 'never'!
-	}
+function doSomething(f: Function) {
+	return f(1, 2, 3);
 }
