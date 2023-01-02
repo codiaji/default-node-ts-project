@@ -1,4 +1,4 @@
-// The inferred return type is void
-function noop() {
-	return;
+function getRndmObj(): object {
+	const rndm = Math.random();
+	return rndm ? [rndm] : { rndm };
 }
