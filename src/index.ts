@@ -1,18 +1,15 @@
-// readonly properties can also change via aliasing.
-interface Person {
-	name: string;
-	age: number;
+import { randomBytes } from 'crypto';
+function getStringArray() {
+	let length = Math.ceil(Math.random() * 100);
+	let array = new Array(length);
+	for (let index = 0; index < length; index += 1) {
+		array[index] = randomBytes(20).toString('hex');
+	}
+	return array;
 }
-interface ReadonlyPerson {
-	readonly name: string;
-	readonly age: number;
+
+interface StringArray {
+	[index: number]: string;
 }
-let writablePerson: Person = {
-	name: 'Person McPersonface',
-	age: 42,
-};
-// works
-let readonlyPerson: ReadonlyPerson = writablePerson;
-console.log(readonlyPerson.age); // prints '42'
-writablePerson.age++;
-console.log(readonlyPerson.age); // prints '43'
+const myArray: StringArray = getStringArray();
+const secondItem = myArray[1];
