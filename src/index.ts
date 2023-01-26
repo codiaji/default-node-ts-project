@@ -1,25 +1,19 @@
-interface NumberOrStringDictionary {
-	[index: string]: number | string;
-	length: number; // ok, length is a number
-	name: string; // ok, name is a string
-}
-/* 
-This code snippet will lead to order
-*/
-// Property 'name' of type 'string' is not assignable to 'string' index type 'number'
-/* 
-interface NumberDictionary {
- [index: string]: number;
- length: number; // ok
- name: string;
-
-}
-*/
-// Index signature in type 'ReadonlyStringArray' only permits reading.
+// The below code snippet will lead to error
 /* 
 interface ReadonlyStringArray {
 	readonly [index: number]: string;
 }
-let myArray: ReadonlyStringArray = getReadOnlyStringArray();
-myArray[2] = "Mallory";
+let myArray: ReadonlyStringArray = ['AE10', 'EA7'];
+myArray[1] = 'ea7'; 
 */
+interface ReadonlyStringArray {
+	readonly [index: number]: string;
+}
+let myArray: ReadonlyStringArray = ['AE10', 'EA7'];
+myArray = ['ea7', 'ae10'];
+// The below code snippet will lead to error
+// myArray.push('am');
+// The below code snippet will lead to error
+// console.log('[...myArray,"am"] :>> ', [...myArray, 'am']);
+// The below code snippet will lead to error
+// Array.from(myArray);
