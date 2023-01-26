@@ -4,8 +4,4 @@ interface Colorful {
 interface Circle {
 	radius: number;
 }
-interface ColorfulCircle extends Colorful, Circle {}
-const cc: ColorfulCircle = {
-	color: 'red',
-	radius: 42,
-};
+type ColorfulCircle = Colorful & Circle;
