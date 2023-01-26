@@ -1,15 +1,25 @@
-import { randomBytes } from 'crypto';
-function getStringArray() {
-	let length = Math.ceil(Math.random() * 100);
-	let array = new Array(length);
-	for (let index = 0; index < length; index += 1) {
-		array[index] = randomBytes(20).toString('hex');
-	}
-	return array;
+interface NumberOrStringDictionary {
+	[index: string]: number | string;
+	length: number; // ok, length is a number
+	name: string; // ok, name is a string
 }
+/* 
+This code snippet will lead to order
+*/
+// Property 'name' of type 'string' is not assignable to 'string' index type 'number'
+/* 
+interface NumberDictionary {
+ [index: string]: number;
+ length: number; // ok
+ name: string;
 
-interface StringArray {
-	[index: number]: string;
 }
-const myArray: StringArray = getStringArray();
-const secondItem = myArray[1];
+*/
+// Index signature in type 'ReadonlyStringArray' only permits reading.
+/* 
+interface ReadonlyStringArray {
+	readonly [index: number]: string;
+}
+let myArray: ReadonlyStringArray = getReadOnlyStringArray();
+myArray[2] = "Mallory";
+*/
