@@ -1,22 +1,16 @@
-//
-type StringNumberPair = [string, number];
-// function doSomething(stringHash: StringNumberPair) {
-function doSomething(stringHash: [string, number]) {
-	const [inputString, hash] = stringHash;
-	console.log(inputString);
-	console.log(hash);
-	//Tuples don't allow index past the number of elements
-	// stringHash[2] = true;
+type ReadOnlyStringNumberPair = readonly [string, number];
+// function doSomething(pair: readonly [string, number]) {
+function doSomething(pair: ReadOnlyStringNumberPair) {
+	// Uncommenting the bellow code snippet will lead to error
+	// pair[0] = 'hello!';
+	const [name, age] = pair;
+	console.log('name :>> ', name);
+	console.log('age :>> ', age);
 }
-type Either2dOr3d = [number, number, number?];
-// Optional tuple elements can only come at the end, and also affect the type of length.
-function getCoordinate(coord: Either2dOr3d) {
-	const [x, y, z] = coord;
-	console.log(`Provided coordinates had ${coord.length} dimensions`);
-	console.log(`the coordinates are x=${x},y=${y} and z=${z}`);
+// array literals with const assertions will be inferred with readonly tuple types
+let point = [3, 4] as const;
+function distanceFromOrigin([x, y]: [number, number]) {
+	return Math.sqrt(x ** 2 + y ** 2);
 }
-// Tuples can also have rest elements, which have to be an array/tuple type
-type activityClub = [...StringNumberPair, ...string[]];
-type StringNumberBooleans = [string, number, ...boolean[]];
-type StringBooleansNumber = [string, ...boolean[], number];
-type BooleansStringNumber = [...boolean[], string, number];
+// Uncommenting the bellow code will introduce an error
+// distanceFromOrigin(point);
