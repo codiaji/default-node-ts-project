@@ -1,7 +1,7 @@
-interface GenericIdentityFn {
-	<Type>(arg: Type): Type;
+interface GenericIdentityFn<Type> {
+	(arg: Type): Type;
 }
 function identity<Type>(arg: Type): Type {
 	return arg;
 }
-let myIdentity: GenericIdentityFn = identity;
+let myIdentity: GenericIdentityFn<number> = identity;
